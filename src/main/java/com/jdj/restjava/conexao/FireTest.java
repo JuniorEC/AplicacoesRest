@@ -2,7 +2,10 @@ package com.jdj.restjava.conexao;
 
 import java.io.IOException;
 
+import com.jdj.restjava.firebase.database.FireConn;
+import com.jdj.restjava.firebase.database.dao.UsuarioDao;
 import com.jdj.restjava.model.Person;
+import com.jdj.restjava.model.Usuario;
 
 public class FireTest {
 
@@ -12,18 +15,33 @@ public class FireTest {
 		try {
 			conn.test();
 
-			Person person = new Person();
-
-			person.setNome("João");
-			person.setEmail("Joao.junior.1141@gmail.com");
-			person.setPwd("1993280166Dhuly");
-			person.setFone("984664359");
-
+			Usuario usuario = new Usuario();
+			usuario.setLastName("Teste1");
+			usuario.setUsername("TP");
+			usuario.setFirstName("Paulo");
+			usuario.setEmail("paulo@gmail.com");
+			usuario.setPswd("123456789");
+			usuario.setCellphone("984664359");
+			
+			UsuarioDao dao = new UsuarioDao();
+			dao.singUp(usuario);
+			
 			FireUser user = new FireUser();
-			user.criaUsuario(person);
+//			user.criaUsuario(person);
 
-			user.Login(person.getEmail());
-		} catch (IOException e) {
+//			user.Login(usuario.getEmail());
+
+			FireData fireData = new FireData();
+
+//			fireData.getUpdate();
+
+//			fireData.savePerson(usuario);
+
+//			fireData.updatePerson(person);
+
+//			fireData.pushPersonComment();
+
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 
